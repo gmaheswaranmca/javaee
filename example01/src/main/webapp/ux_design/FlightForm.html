@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Aviation System - Admin App</title>
+	<base href="/">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" 
+		href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+		integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" 
+		crossorigin="anonymous">
+</head>
+	<body>
+		<div id="root">
+			<div id="main">
+				<nav class="navbar navbar-expand navbar-dark bg-dark">
+					<a href="/flight-list" class="navbar-brand">Flights App</a>
+					<div class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a href="/flight-list" class="nav-link">Flights</a>
+						</li>
+						<li class="nav-item">
+							<a href="/flight-add" class="nav-link">Add Flight</a>
+						</li>
+					</div>
+				</nav>
+				<div class="container mt-3">
+					<div class="edit-form">
+						<h4>Flight</h4>
+						<form action="/example01/adminapp01/flight/form-action.html" method="post">
+								<input type="hidden" 
+									name="id" value="">
+								<input type="hidden" 
+									name="action" value="new">
+								<div class="form-group">
+										<label for="airlineName">Airline Name</label>
+										<input type="text"
+												class="form-control"
+												id="airlineName"
+												name="airlineName"
+												required
+												[(ngModel)]="currentFlight.airlineName"/>
+								</div>
+								<div class="form-group">
+										<label for="flightNumber">Flight Number</label>
+										<input type="text"
+												class="form-control"
+												id="flightNumber"
+												name="flightNumber"
+												required
+												[(ngModel)]="currentFlight.flightNumber"/>
+								</div>
+								<div class="form-group">
+									<label for="source">Source</label>
+									<input type="text"
+											class="form-control"
+											id="source"
+											required
+											[(ngModel)]="currentFlight.source"
+											name="source"/>
+							</div>
+							<div class="form-group">
+								<label for="destination">Destination</label>
+								<input type="text"
+										class="form-control"
+										id="destination"
+										required
+										[(ngModel)]="currentFlight.destination"
+										name="destination"/>
+							</div>
+							<button
+								type="submit"
+								class="badge badge-success">Update</button>
+							
+							<button
+								type="submit"
+								class="badge badge-success">Create</button>
+						</form>
+						<form action="/example01/adminapp01/flight/delete-action.html" method="post"/>
+								<input type="hidden" 
+									name="id" value="">
+								<button
+										type="submit"
+										class="badge badge-warning">Delete</button>
+						</form>
+					</div>
+				</div><!-- container mt-3 -->
+			</div><!-- #main -->
+		</div><!-- #root -->
+	</body>
+</html> 
