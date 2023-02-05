@@ -1,12 +1,134 @@
-git status					!!! Tells about the status of the local files
-git add .					!!! It stages to the git db/repo
-git commit -m "NOTES"		!!! It updates the local repo 
-git push origin main		!!! It uploads to the remote 
-git pull origin main		!!! It downloads from the remote 
+********Notes********
+- Git is a version control system
+- It is used by 
+	software developers 
+	to track changes 
+	in applications and 
+	collaborate on projects.
+
+********Few Commands********
+$git status					!!! Tells about the status of the local files
+$git add .					!!! It stages to the git db/repo
+$git commit -m "NOTES"		!!! It updates the local repo 
+$git push origin main		!!! It uploads to the remote 
+$git pull origin main		!!! It downloads from the remote 
 
 
 
-git remote set-url origin https://yourgithubusername:yourpersonalaccesstoken@github.com/yourgithubusername/reponame.git
+$git remote set-url origin https://yourgithubusername:yourpersonalaccesstoken@github.com/yourgithubusername/reponame.git
 							!!!resets "the map {username,PAT}"
 
-git revert !!! undo the "git add"
+$git revert 
+	!!! undo the "git add"
+
+********Notes on Branches********
+
+To learn
+	Branches as a core concept in Git
+	Core concepts: the HEAD branch
+	Core concepts: local vs. remote branches
+	Creating new branches
+	Switching branches
+	Renaming branches
+	Publishing branches !!!NOT DONE
+	Tracking branches	!!!NOT DONE
+	Pulling + pushing branches	!!!NOT DONE
+	Deleting branches
+	Merging branches	!!!NOT DONE
+	Rebasing branches	!!!NOT DONE
+	Comparing branches	!!!NOT DONE
+
+- Branches - the feature makes the Git "more dynamic".
+
+!!!to show all remote and local branch names ->
+!!!to show all local branch names:
+$git branch
+
+!!!to show all remote branch names:
+$git branch -r
+
+!!!To see all local and remote branches: 
+$git branch -a
+
+!!!To see detailed information such as 
+	the local or remote branches in use, 
+	commit ids, and 
+	commit message
+$git branch -vv 
+	or 
+$git branch -vva
+
+!!!Creating new branches
+!!!To create new branch named "new_branch_name"
+$git branch new_branch_name	
+
+!!!To switch Git to branch named "new_branch_name" 
+$git checkout new_branch_name
+
+!!!To create new branch named "new_branch_name"
+	and
+	To switch Git to branch named "new_branch_name"
+$git checkout -b new_branch_name
+
+!!!To create new branch named "new_branch_name" 
+   not from the current branch
+   but from the branch named "specific_different_branch"
+		and
+   To switch Git to branch named "new_branch_name"
+$git checkout -b new_branch_name specific_different_branch
+
+!!! Link to learn more creation options: https://phoenixnap.com/kb/git-create-new-branch
+
+!!!to Delete a Git Branch
+$git checkout main
+$git branch -d new_branch_name
+
+!!!How To Switch Branch on Git
+!!!To switch from current branch to the branch named "new_branch_name"
+$git checkout new_branch_name
+
+!!!To switch to the branch named "new_branch_name" Note: Used > Git 2.23 
+$git switch new_branch_name
+
+
+---
+!!!How To Rename a Local and Remote Git Branch
+!!!To rename the branch name "old_branch_name" to the name "new_branch_name"
+	!!!To checkout to the branch "old_branch_name"
+$git checkout old_branch_name	
+	!!!To Rename to the new name "new_branch_name"
+$git branch -m new_branch_name
+
+---
+!!!To rename the branch name "old_branch_name" to the name "new_branch_name"
+	!!!to switch to main branch 
+$git checkout main
+	!!!rename the 
+$git branch -m old_branch_name new_branch_name
+
+---
+!!!To verify the status of the brach which is renamed:
+$git branch -a
+---
+
+!!!Rename a Remote Git Branch :: Way 1
+!!!- There isn’t a way to directly rename a Git branch in a remote repository.
+!!!- You have to delete the old branch name at remote, 
+!!!- Then push a branch "new branch" to the remote repository
+!!! 1.Verify the local branch has the correct name
+$git branch -a
+!!! 2.Delete the branch old_branch_name at the remote repository
+$git push origin --delete old_branch_name
+!!! 3. Finally, push the branch with the correct name, and reset the upstream branch:
+$git push origin -u new_branch_name
+
+!!!Rename a Remote Git Branch :: Way 2
+$git push origin old_branch_name new_branch_name
+!!!Resetting the upstream branch is still required:
+$git push origin -u new_branch_name
+
+
+
+
+	
+

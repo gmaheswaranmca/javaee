@@ -41,8 +41,8 @@ public class PageFlightBaseForm extends HttpServlet {
 				+ "								<input type=\"hidden\" \r\n"
 				+ "									name=\"id\" value=\"" + flight.getId() + "\">\r\n"
 				+ "								<button\r\n"
-				+ "										type=\"submit\"\r\n"
-				+ "										class=\"badge badge-warning\">Delete</button>\r\n"
+				+ "									type=\"submit\"\r\n"
+				+ "									class=\"badge badge-warning\">Delete</button>\r\n"
 				+ "						</form>\r\n";
 		if(isCreate) {
 			deleteButton = "";
@@ -73,7 +73,7 @@ public class PageFlightBaseForm extends HttpServlet {
 				+ "						<h4>" + title + "</h4>\r\n"
 				+ "						<form action=\"" + pagePath + "/form-action.html\" method=\"post\">\r\n"
 				+ "								<input type=\"hidden\" \r\n"
-				+ "									name=\"id\" value=\"\">\r\n"
+				+ "									name=\"id\" value=\"" + flight.getId() + "\">\r\n"
 				+ uiPre
 				+ "								<div class=\"form-group\">\r\n"
 				+ "										<label for=\"airlineName\">Airline Name</label>\r\n"

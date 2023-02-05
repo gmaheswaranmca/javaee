@@ -22,6 +22,21 @@ Servlet CRUD operations on entity "flight{id, number, airline_name, source, dest
    mockito											????
 	
 **************************!!!```IMPORTANT```!!!***********
+Database Table:
+	CREATE TABLE `flight` (
+  		`id` int NOT NULL AUTO_INCREMENT,
+  		`number` varchar(20) NOT NULL,
+  		`airline_name` varchar(500) NOT NULL,
+  		`source` varchar(250) NOT NULL,
+  		`destination` varchar(250) NOT NULL,
+  		PRIMARY KEY (`id`),
+  		UNIQUE KEY `number_UNIQUE` (`number`)
+	) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+	
+	
+	
+--- --- ---	
+
 The jdbc driver with maven dependency
 	<dependency>
         <groupId>mysql</groupId>
@@ -39,9 +54,10 @@ has run in
 		is mandatory.
 		-if excluded, the error: 
 			"java.sql.SQLException: No suitable driver found for jdbc:mysql://localhost:3316/flight_app"
-stackoverflow blog:
+			
+^^^^^^^^^^^^stackoverflow blog:^^^^^^^^^^^^
 	Tomcat can't find mysql-connector-java-8.0.30.jar that I put in the WEB-INF/lib/ [duplicate]
-	https://stackoverflow.com/questions/74326592/tomcat-cant-find-mysql-connector-java-8-0-30-jar-that-i-put-in-the-web-inf-lib			
+		https://stackoverflow.com/questions/74326592/tomcat-cant-find-mysql-connector-java-8-0-30-jar-that-i-put-in-the-web-inf-lib			
     
 MySQL JDBC Connection URL Syntax:    
 		protocol//[hosts][/database][?properties]
@@ -250,6 +266,5 @@ servlet
 		class PageActionDelete | delete action | .. .."/delete-action.html" | [id=101 in post form]
 			doPost
 ### ### ###	
-```````````````````````````````````````````````````````
-5.				
+```````````````````````````````````````````````````````			
 		
