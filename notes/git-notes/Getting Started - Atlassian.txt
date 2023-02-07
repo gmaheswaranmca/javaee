@@ -1,0 +1,247 @@
+https://www.atlassian.com/git/tutorials/what-is-version-control
+***********************Beginner***********************
+``````````````What is version control?`````````````````````
+
+	 "How version control helps high performing development and DevOps teams prosper"
+	 - Version control, also known as source control, is 
+		"
+		the practice of tracking and managing changes to software code. 
+		"
+
+``````````````What is Git`````````````````````		
+		'
+		the most widely used modern "version control system" in the world today is Git
+		'
+	
+
+https://www.atlassian.com/git/tutorials/setting-up-a-repository
+***********************Getting Started***********************
+1. Initializing a new Git repo
+2. Cloning an existing Git repo
+3. Committing a modified version of a file to the repo
+4. Configuring a Git repo for remote collaboration
+5. Common Git version control commands
+``````````````Setting up a repository`````````````````````
+COMMAND:git init 
+COMMAND:git clone 
+COMMAND:git config
+
+What is a Git repository?
+	- A Git repository is a virtual storage of your project. 
+	- It allows you to save versions of your code, which you can access when needed. 
+	
+1. Initializing a new repository: git init
+		- To create a new repo, you'll use the 
+				$git init 
+			command. 
+		- "git init" is a one-time command 
+			you use during the initial setup of a new repo. 
+			Executing this command will create a new 
+				".git" subdirectory 
+			in your current working directory. 
+			This will also create a new "main" branch. 	
+		Versioning an existing project with a new git repository
+
+	This example assumes you already have an existing project folder 
+	that you would like to create a repo within. 
+	You'll first cd to the root project folder and then execute the git init command.
+
+	$cd /path/to/your/existing/code 
+	$git init
+	
+	Pointing git init to an existing project directory will execute 
+	the same initialization setup as mentioned above, 
+	but scoped to that project directory.
+
+	$git init <project directory>
+2. Cloning an existing repository: git clone
+	- If a project has already been set up in a central repository, 
+		the clone command is the most common way for users 
+		to obtain a local development clone. 
+	- Like git init, 
+		cloning is generally a one-time operation. 
+	- Once a developer has obtained a working copy, 
+		all version control operations are managed through their local repository.
+
+	$git clone <repo url>
+	"git clone" is used to create a copy or clone of remote repositories. 
+	You pass "git clone" a repository URL. 
+	Git supports a few different network protocols and corresponding URL formats. 
+	In this example, we'll be using the Git SSH protocol. 
+	Git SSH URLs follow a template of: 
+		git@HOSTNAME:USERNAME/REPONAME.git
+
+	An example Git SSH URL would be: 
+		git@bitbucket.org:rhyolight/javascript-data-store.git 
+	where the template values match:
+		HOSTNAME: bitbucket.org
+		USERNAME: rhyolight
+		REPONAME: javascript-data-store
+	When executed, the latest version of the remote repo files 
+	on the main branch will be pulled down and added to a new folder. 
+	The new folder will be named after the REPONAME 
+	in this case javascript-data-store. 
+	The folder will contain the full history of the remote repository and 
+	a newly created main branch.
+
+
+``````````````Saving Changes`````````````````````
+COMMAND:git add 
+COMMAND:git commit 
+COMMAND:git diff 
+COMMAND:git stash 
+COMMAND:.gitignore
+
+`````````````` Inspecting a repository`````````````````````
+git status 
+git tag 
+git blame
+
+`````````````` Undoing Commits & Changes`````````````````````
+git checkout 
+git clean 
+git revert 
+git reset 
+git rm
+
+`````````````` Rewriting history`````````````````````
+Git commit --amend 
+other methods of rewriting history
+
+***********************Collaborating***********************	
+`````````````` Syncing / Git remote`````````````````````
+git remote 
+git fetch 
+git push 
+git pull
+
+`````````````` Making a Pull Request`````````````````````
+How it works 
+Example 
+Where to go from here
+
+`````````````` Using branches`````````````````````
+git branch
+git checkout
+git merge
+Merge conflicts
+Merge strategies
+
+`````````````` Comparing Git Workflows: What You Should Know`````````````````````
+Centralized Workflow
+Feature Branch Workflow
+Gitflow Workflow
+Forking Workflow
+
+
+*************git commands from atlassian "A-Z"***************
+https://www.atlassian.com/git/glossary
+
+COMMAND:git add
+	- Moves changes from the working directory to the staging area.
+	- This gives you the opportunity to prepare a snapshot 
+		before committing it to the official history.
+	
+COMMAND:git branch
+	- This command is your general-purpose branch administration tool. 
+	- It lets you create isolated development environments within a single repository.
+
+COMMAND:git checkout
+	- In addition to checking out old commits and old file revisions, 
+		git checkout is also the means to navigate existing branches. 
+	- Combined with the basic Git commands, 
+		it’s a way to work on a particular line of development.
+
+COMMAND:git clean
+	- Removes untracked files from the working directory. 
+	- This is the logical counterpart to git reset, 
+		which (typically) only operates on tracked files.
+
+COMMAND:git clone
+	- Creates a copy of an existing Git repository. 
+	- Cloning is the most common way for developers 
+		to obtain a working copy of a central repository.
+
+COMMAND:git commit
+	- Takes the staged snapshot and commits it to the project history. 
+	- Combined with git add, 
+		this defines the basic workflow for all Git users.
+
+COMMAND:git commit --amend
+	- Passing the --amend flag to git commit lets you amend the most recent commit. 
+	- This is very useful when you forget to stage a file or 
+		omit important information from the commit message.
+
+COMMAND:git config
+	- A convenient way to set configuration options for your Git installation. 
+	- You’ll typically only need to use this immediately 
+		after installing Git on a new development machine.
+
+COMMAND:git fetch
+	- Fetching downloads a branch from another repository, 
+		along with all of its associated commits and files. 
+	- But, it doesn't try to integrate anything into your local repository. 
+	- This gives you a chance to inspect changes before merging them with your project.
+
+COMMAND:git init
+	- Initializes a new Git repository. 
+	- If you want to place a project under revision control, 
+		this is the first command you need to learn.
+	
+COMMAND:git log
+	- Lets you explore the previous revisions of a project. 
+	- It provides several formatting options for displaying committed snapshots.
+	
+COMMAND:git merge
+	- A powerful way to integrate changes from divergent branches. 
+	- After forking the project history with git branch, 
+		git merge lets you put it back together again.
+	
+COMMAND:git pull
+	- Pulling is the automated version of git fetch. 
+	- It downloads a branch from a remote repository, 
+		then immediately merges it into the current branch. 
+	- This is the Git equivalent of svn update.	
+
+COMMAND:git push
+	- Pushing is the opposite of fetching (with a few caveats). 
+	- It lets you move a local branch to another repository, 
+	which serves as a convenient way to publish contributions. 
+	- This is like svn commit, but it sends a series of commits instead of a single changeset.
+	
+COMMAND:git rebase
+	- Rebasing lets you move branches around, 
+		which helps you avoid unnecessary merge commits. 
+	- The resulting linear history is often much easier to understand and explore.
+	
+COMMAND:git rebase -i
+	- The -i flag is used to begin an interactive rebasing session. 
+	- This provides all the benefits of a normal rebase, 
+		but gives you the opportunity to add, edit, or delete commits along the way.
+	
+COMMAND:git reflog
+	- Git keeps track of updates to the tip of branches using a mechanism called reflog. 
+	- This allows you to go back to changesets 
+		even though they are not referenced by any branch or tag.
+	
+COMMAND:git remote
+	- A convenient tool for administering remote connections. 
+	- Instead of passing the full URL to the fetch, pull, and push commands, 
+		it lets you use a more meaningful shortcut.
+	
+COMMAND:git reset
+	- Undoes changes to files in the working directory. 
+	- Resetting lets you clean up or completely remove changes 
+		that have not been pushed to a public repository.
+	
+COMMAND:git revert
+	- Undoes a committed snapshot. 
+	- When you discover a faulty commit, reverting is a safe and 
+		easy way to completely remove it from the code base.
+	
+COMMAND:git status
+	- Displays the state of the working directory and the staged snapshot. 
+	- You’ll want to run this in conjunction with git add and git commit 
+		to see exactly what’s being included in the next snapshot.
+
+

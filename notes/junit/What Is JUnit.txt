@@ -1,0 +1,290 @@
+Jnit:
+------------------------------------
+	1. JUnit 5 allows to use static imports
+	2. JUnit 4 allows annotations to make a method as test case etc
+	
+*********Junit 4*********
+	- JUnit is a test framework 
+		which uses annotations 
+		to identify methods that specify a test. 
+	- JUnit is an open source project hosted at Github.
+...
+	How to define a test in JUnit?
+	- A JUnit test is 
+		a method contained in a class 
+		which is only used for testing.
+	- To define that a certain method is a test method, 
+		annotate it with the 
+			@Test 
+		annotation.
+	...
+	- This method executes 
+		"the code under test". 
+	- You use an assert method, provided by JUnit or another assert framework, 
+		"to check an expected result versus the actual result". 
+	- These method calls are typically called 
+			"asserts" or 
+			"assert statements".
+	...
+	- You should provide meaningful messages in assert statements. 
+	- That makes it easier for the user to identify and fix the problem. 
+	- This is especially true if someone looks at the problem, 
+		who did not write the code under test or the test code.
+	...
+	
+	
+
+************************************!!!Welcome!!!******************************************		
+
+https://www.vogella.com/tutorials/JUnit/article.html
+
+Try it!!!
+
+https://www.vogella.com/tutorials/JUnit4/article.html
+
+Try it!!!
+
+https://www.vogella.com/tutorials/Mockito/article.html
+
+Try it!!!
+
+************************************The End******************************************		
+
+************************************!!!Welcome!!!******************************************		
+002.
+https://www.edureka.co/blog/junit-tutorial/
+``````````````````````````````Unit Testing```````````````````````````````
+	Unit Testing is used 
+	"to verify a small chunk of code" 
+			by creating 
+					a path, 
+					function or a method
+
+``````````````````````````````JUnit```````````````````````````````
+	- Popular Open Source Java Unit Testing framework 
+	- JUnit promotes the idea of “test first, use 'the code' later”				
+	...
+	for a piece of code 
+		- set up the test data
+		- test it first 
+		- then use it 
+	...
+	- Major IDEs support JUnit.
+	- Open Source Community contributes to the JUnit consistently
+	...
+	- JUnitEE test framework is used to 
+		test within the application server’s container.
+	
+JUnit rule
+		- Annotation is used to define the rule 
+		- A test case method must be 
+			not static, public, and 
+			must return a subtype of TestRule or MethodRule 
+		- A JUnit 4 rule is a component 
+			that intercepts the test method calls and 
+			allows you 
+			to perform some action 
+				before a test method is run and 
+				after a test method has been run.
+				
+Framework provides the features:
+	o Test fixtures
+	o Test suites
+	o Test runners
+	o JUnit classes
+
+Test fixtures	
+	- A fixture is 
+		a fixed state of a set of objects 
+			which is used as a baseline 
+			for running the test cases.	
+	- The major purpose of a test fixture is 
+		to ensure that 
+		there is a well-known and fixed environment in which tests are run 
+		so that results are repeatable.
+	-	setUp() method, 
+			which runs before every test invocation. 
+			The annotation @Before is used.
+	- tearDown() method, 
+			which runs after every test method. 
+			The annotation @After is used.
+	
+Test suites
+	- If you want to execute multiple test cases in a specific order, 
+		it can be done 
+		by combining all the test cases in a single origin. 
+	- This origin is called the test suites.
+	...
+	- A test suite bundles a few unit test cases and runs them together.
+	...
+	- To run the suite test, 
+		you need to annotate a class using below-mentioned annotations:
+	@Runwith(Suite.class)
+	@SuiteClasses(test1.class,test2.class……) or 
+	@Suite.SuiteClasses ({test1.class, test2.class……})	
+	
+Test Runner
+	- The test runner is used for executing the test cases.
+	...
+	- JUnit provides a tool for the execution of the test cases.
+	...
+	- JUnitCore class is used in order to execute the tests.
+	- A method called runClasses 
+		which is provided by org.junit.runner.JUnitCore is used 
+		to run one or several test cases.
+	- The return type of this method is the result object (org.junit.runner.Result), 
+		that is used to access information about the tests.	
+		
+JUnit Classes
+	- JUnit classes are used in writing and testing JUnits. 
+	Some of the important classes are:
+		- Assert: It contains a set of assert methods.
+		- TestCase: Contains a test case that defines the fixture to run multiple tests.
+		- TestResult: It contains methods in order to collect the results of executing a test case.		
+		
+!!!-!!!...Yet To Read the blog 
+************************************The End******************************************		
+
+************************************!!!Welcome!!!******************************************		
+001.
+***********************What Is JUnit: ***********************
+***********************An Overview of the Best Java Testing Framework***********************
+	https://www.simplilearn.com/tutorials/java-tutorial/what-is-junit#:~:text=JUnit%20is%20a%20unit%20testing,in%20the%20code%20is%20broken.
+
+`````````````````````````````````````````````````````````````	
+Table of Contents
+	What is JUnit?
+	What is Unit Testing?
+	What is the need for JUnit Testing?
+	Features of JUnit
+	JUnit Annotations
+	Conclusion
+	
+	
+
+``````````````````````````````What is JUnit?```````````````````````````````		
+		- JUnit is a unit testing open-source framework for the Java programming language. 
+		- Java Developers use this framework to write and execute automated tests. 
+		- In Java, there are test cases 
+			that have to be re-executed every time a new code is added. 
+			This is done to make sure that nothing in the code is broken. 
+		...	
+		- JUnit has several graphs that represent the progress of a test. 
+		- When the test runs smoothly, 
+			the graph displays a green color, and 
+			it turns red 
+			if the test fails. 
+		- JUnit Testing enables developers to develop highly reliable and bug-free code.			
+		...
+		- JUnit plays a huge role when it comes to regression testing. 
+		- Regression Testing is a type of software testing 
+			that checks 
+			if the recent changes made to the code 
+				do not adversely affect 
+			the previously written code.
+		...
+		- To have a better answer to the question ‘What is JUnit’, 
+			let's have a look at what Unit Testing is.
+		...
+What is Unit Testing?
+		- Unit testing, 
+			as the name suggests, 
+			refers to the testing of small segments of code. 
+		- Here, a unit indicates the smallest bit of code 
+			that can be fetched out of the system. 
+		- This small bit can be 
+			a line of the code, 
+			a method, or 
+			a class. 
+		- The smaller the chunk of code, 
+			the better it is, 
+			as smaller chunks will tend to run faster. 
+		- And this provides 
+				o a better insight into the code and 
+				o its performance. 
+		...
+		- When the chunk is small, 
+			it is easy to identify the defects from the dormant phase itself. 
+		- The developers now spend more time reading the code than writing it. 
+		- A successful code  
+				o boosts the confidence of the developer and 
+				o makes them work better.
+		...
+What is the need for JUnit Testing?
+		The top reasons to take up JUnit Testing are:
+		>> To find bugs early in the development phase, 
+			which increases the code’s reliability
+		>> The framework enables the developer 
+			to invest more time in reading the code than writing it
+		>> This makes the code more readable, reliable, and bug-free
+		>> It boosts the confidence of the developer and motivates them immensely 
+		...
+Features of JUnit
+	There are several features of JUnit that make it so popular. 
+	Some of them are as follows:
+	######Open Source Network:###### 
+	- JUnit is an open-source network 
+		that enables developers to write codes fast and with better quality.
+
+	######Provides Annotations:###### 
+	- It provides several annotations to identify test methods.
+
+	######Provides Assertions:######
+	There are assertions to test expected results.
+
+	######Provides Test Runners:######
+	JUnit has test runners to run tests.		
+	
+	######Improves Code Quality:###### 
+	- JUnit is the most popular testing framework for efficient testing. 
+	- It allows faster code writing, which results in an increase in the code’s quality. 
+
+	######Automated Test Running:###### 
+	- The test results do not require manual checking. 
+	- All the tests run automatically on JUnit, 
+		the results obtained again automatically checked, and 
+		it provides feedback.	
+		
+	######Easily interpretable results:###### 
+	- The test results are represented interactively 
+		by showing test progress in a bar, 
+		thus making them easily interpretable.
+	...
+Moving on, let's have a look at JUnit Annotations.		
+	- JUnit Annotations refer to 
+		the syntactic meta-data added to the Java source code 
+		for better structure and readability. 
+	- Here, syntactic meta-data refers to 
+		the type of data representing the structure of a file 
+		with references to bytes, data types, and data structures.
+	\\\
+	The main point of difference between JUnit4 and JUnit3 is 
+	the introduction of  Junit Annotations.
+	\\\
+	@Test 
+		- Tells JUnit 
+			which public void method can be run as a test case
+	@Before
+		- To execute some statement before each test case 
+	@After 
+		- To execute some statement after each test case 
+	@Ignores
+		- Used to ignore test cases to get run 
+	@BeforeClass
+		- Used to execute statement before all test cases 
+	@AfterClass
+		- Used to execut statement before all test cases 
+	@Test(timeOut=500)
+		- To set timeout while running test case 
+	@Test(expected=IllegalArgumentException.class)
+		- To handle some exception during test execution 
+		
+************************************The End******************************************		
+
+
+	
+	
+		
+	
+		
+	

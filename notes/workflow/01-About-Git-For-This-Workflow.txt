@@ -1,0 +1,32 @@
+For javaee workflow:
+	1. Created 
+		empty public "git repo"
+		at GitHub
+	2. Cloned at javaee-02 using "git clone"
+	3. Moved the contents of the "javaee-02" to "javaee"
+	4. "git reset" is used to set the repo to sync for PAT(personalized access token)
+		!!!NOTE: I have configured "git" in my computer longer
+	5. ".gitignore" is set to every project folder and 
+		at "javaee" folder's ".gitignore" will ignore the eclipse ide related folders 
+	6. "git add" to update to stage 
+	   "git commit" to update to "local repo"
+		 "git push origin main" to update "repote repo"
+	7. create branch
+		a. "learn_devops"	
+				for junit
+					  mockito
+						maven 
+						git 
+						jenkin
+						
+		b. "learn_javaee"
+				for servlet,
+					jsp,
+					jsf etc 
+					
+		c. "learn_spring"
+				for "spring core",
+					"spring aop",
+					"spring mvc",
+					"spring rest" etc 
+		
