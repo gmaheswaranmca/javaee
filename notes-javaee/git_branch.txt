@@ -1,0 +1,19 @@
+git_branch
+Merging Branches in a Local Repository
+	$git checkout main						!!! in the local repo, you are at the branch"main" 
+	$git merge jeff/feature1			!!!	in the local repo, 
+																!!!			you merge the branch "feature1" into the branch "main"
+																!!!			here "jeff" is your username
+																!!!	so the branch "jeff/feature1" is mereged into the branch "main"
+																
+
+Merging Branches to Remote Repository
+	$git push --set-upstream origin <branch name>
+	
+	ie 
+	$git push --set-upstream origin main
+	$git push --set-upstream origin learn_javaee
+	
+Merging Main into a Branch
+	$git checkout <branch name>
+	$git merge main
