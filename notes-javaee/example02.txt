@@ -1,0 +1,270 @@
+To Do:
+1. 
+example02
+	"flight crud operations using Java EE"
+	pages: list.html, create-form.html, edit-form.html
+	Servlet CRUD operations on entity 
+	"flight{id, number, airline_name, source, destination}"
+		Create
+		Read
+		Update
+		Delete
+	using "mysql" database table "flight"			!!! DONE
+	uses "bootstrap"								!!! DONE
+		uses list										!!! DONE
+		uses table									!!! ???
+	
+	"admin - Read"
+	"findByUsernamePassword()"
+	Servlet Login, Logout, Authorization 
+	"admin:{id, username, password, full_name, role_id}"
+	"role:{id, name}"				!!! Manager, Entry, Edit 
+	
+	"Entry" role user can create flight 
+	"Edit" role user can update flight 
+	"Manager" role user can delete 
+2.
+**************************!!!```IMPORTANT```!!!***********
+Database Table:
+	CREATE TABLE `flight` (
+  		`id` int NOT NULL AUTO_INCREMENT,
+  		`number` varchar(20) NOT NULL,
+  		`airline_name` varchar(500) NOT NULL,
+  		`source` varchar(250) NOT NULL,
+  		`destination` varchar(250) NOT NULL,
+  		PRIMARY KEY (`id`),
+  		UNIQUE KEY `number_UNIQUE` (`number`)
+	) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+--- --- ---	
+
+The jdbc driver with maven dependency
+	<dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.20</version>
+        <scope>compile</scope>
+    </dependency>
+
+has run in 
+	(1) console app
+		- Class.forName("com.mysql.cj.jdbc.Driver");    
+		is not mandatory.
+	(2) servlet app
+		- Class.forName("com.mysql.cj.jdbc.Driver");    
+		is mandatory.
+		-if excluded, the error: 
+			"java.sql.SQLException: No suitable driver found for jdbc:mysql://localhost:3316/flight_app"
+			
+^^^^^^^^^^^^stackoverflow blog:^^^^^^^^^^^^
+	Tomcat can't find mysql-connector-java-8.0.30.jar that I put in the WEB-INF/lib/ [duplicate]
+		https://stackoverflow.com/questions/74326592/tomcat-cant-find-mysql-connector-java-8-0-30-jar-that-i-put-in-the-web-inf-lib			
+    
+MySQL JDBC Connection URL Syntax:    
+		protocol//[hosts][/database][?properties]
+	Example 1:
+		jdbc:mysql://host1:33060/flight_app
+	URL (to refer more):
+		https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference-jdbc-url-format.html
+	    
+**************************How To************************** 
+0. Eclipse IDE for Java EE Developers
+	https://www.eclipse.org/downloads/packages/
+	Eclipse IDE 2022-12 R Packages
+	"Eclipse IDE for Enterprise Java and Web Developers"
+	'
+		Tools for developers working with Java and Web applications, 
+		including a Java IDE, tools for 
+		JavaScript, 
+		TypeScript, 
+		JavaServer Pages and 
+		Faces, 
+		Yaml, 
+		Markdown, 
+		Web Services, 
+		JPA and 
+		Data Tools, 
+		Maven and 
+		Gradle, 
+		Git, and 
+		more.
+	'
+	Windows x86_64
+	https://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/2022-12/R/eclipse-jee-2022-12-R-win32-x86_64.zip
+	Download
+	516MB downloaded.
+	@ folder 
+	E:\v2m\techLang\course-software\java-and-spring
+	
+Tomcat 10 downloads:
+	https://tomcat.apache.org/download-10.cgi
+	10.0.27
+		Binary Distributions
+			Core: zip (pgp, sha512)
+			11.9 MB
+			@E:\work\software\31\tomcat10
+			
+
+MySql WorkBench Installation
+	User MySql Installer,
+		To create server
+			Select Products -> MySql Server -> 8.0.32
+				   Download
+				   Install
+				   				
+	
+1. Eclipse  
+	(-> File -> New -> Other 
+		-> Search "Dynamic Web Project"
+		-> Web )
+			-> Dynamic Web Project 
+
+2. Project Name: example02
+	Project Location: ([x]Use Default Location ie:E:\work\examples\javaee)
+	Target Runtime: Apache Tomcat v10.0
+		Installed JRE: C:\Program Files\Java\jdk1.8.0_261
+	Dynamic web module: 5.0
+	
+3. Right Click -> Configure 
+	-> Convert to maven Project
+	-> Enter Group Id, Artifact Id, version, packaging
+		example02,example02,0.0.1-SNAPSHOT,war
+	"Finish"
+	!!! pom.xml is added and starts to scan for dependencies
+	
+	
+4. JDBC based connection
+```````````````````````````````````````````````````````
+package example02.util.mysql
+	interface DbMysqlIGetEntity<T>
+		+ T doGetEntity(ResultSet resultSet) throws SQLException
+	interface DbMysqlIAddParam<T>
+		+ void doAdParams(PreparedStatement statement, T entity) throws SQLException   			
+	class DbMysqlBase	<-- Singleton
+		- Connection connection
+		- void open() throws SQLException
+		- void close() throws SQLException
+		+ <T>List<T> readAll(String sql, 
+			DbMysqlIGetEntity<T> fnGetEntity, 
+			DbMysqlIAddParam<T> fnSetParams)
+		+ <T>List<T> readAll(String sql, 
+			DbMysqlIGetEntity<T> fnGetEntity)
+		+ <T>boolean write(String sql, T entity,
+			DbMysqlIAddParam<T> fnSetParams)
+		+ <T>boolean write(String sql,
+			T entity)
+		+ <T>Optional<T> readOne(String sql, 
+			DbMysqlIGetEntity<T> fnGetEntity, 
+			DbMysqlIAddParam<T> fnSetParams)
+		+ <T>Optional<T> readOne(String sql, 
+			DbMysqlIGetEntity<T> fnGetEntity)
+		...	!!! Singleton
+		- DbMysqlBase()
+		static- DbMysqlBase instance
+		static+ DbMysqlBase factory()
+	class DbMySqlIConfig
+		static 
+			+ String URL
+			+ String USER
+			+ String PASSWORD
+			...
+			- boolean isRead
+			...
+			{doRead();}
+			...
+			+ void doRead()
+		
+package example02.flightapp01.flight
+	class Flight
+		- int id
+		- String number
+		...
+		- String airlineName
+		...
+		- String source
+		- String destination
+		...
+		+ getters / setters			!!! generate
+		...
+		+ arguments constructor		!!! generate
+		+ no-arguments constructor 	!!! generate
+		...
+		+ String toString()
+			
+	
+	interface FlightIRepository
+		+ Flight save(Flight flight) 
+		+ Optional<Flight> findById(int id)
+		+ List<Flight> findAll()
+		+ void deleteById(int id)
+		
+	class FlightRepository	: FlightIRepository
+		- Flight create(Flight flight)
+		- Flight update(Flight flight)
+		+ Flight save(Flight flight);
+		+ Optional<Flight> findById(int id)
+		+ List<Flight> findAll();
+		+ void deleteById(int id)
+		
+	class FlightRepositoryDAO	: FlightIRepository
+		- Flight create(Flight flight)
+		- Flight update(Flight flight)
+		+ Flight save(Flight flight)
+		+ Optional<Flight> findById(int id)
+		+ List<Flight> findAll()
+		+ void deleteById(int id)
+				
+	class FlightService	
+		 
+package example02.flightapp01.flight.verify
+	class VerifyFlightRepository	
+		static
+			- FlightIRepository repository = new FlightRepository()
+			- void testCreate()
+			- void testReadOne()
+			- void testReadAll()
+			- void testUpdate()
+			- void testDelete()
+			- int menu();
+			+ void main(String[] args)	
+	class VerifyFlightRepositoryDAO	
+		static
+			- FlightIRepository repository = new FlightRepositoryDAO()
+			- void testCreate()
+			- void testReadOne()
+			- void testReadAll()
+			- void testUpdate()
+			- void testDelete()
+			- int menu();
+			+ void main(String[] args)		
+
+### ### ###
+	
+servlet		
+	pages root:: 	"/example02" ->	"/adminapp01/flight.html" -> 
+	package example.flightapp01.flight.web.base
+		class PageHeader | .. .."/header.html"
+			doGet
+			doPost
+		class PageFooter | .. .."/header.html"
+			doGet
+			doPost
+		...
+		class PageFlightBaseForm	 | create/edit | .. .."/base-form.html"
+			service
+		
+	package example.flightapp01.flight.web
+		class PageFlightList | .. .."/list.html"
+			doGet	
+		...	
+		class PageFlightCreateForm | .. .."/create-form.html"
+			doGet
+		class PageFlightEditForm | .. .."/edit-form.html" | form(post method)-param:id=101	
+			doPost
+		...	
+		class PageActionFlightForm | create/edit action | .. .."/form-action.html"  |  [id=101 in post form]
+			doPost
+		class PageActionDelete | delete action | .. .."/delete-action.html" | [id=101 in post form]
+			doPost
+### ### ###	
+```````````````````````````````````````````````````````			
+		

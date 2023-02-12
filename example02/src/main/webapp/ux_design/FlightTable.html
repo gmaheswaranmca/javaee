@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Aviation System - Admin App</title>
+	<base href="/">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link rel="stylesheet" 
+		href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
+		integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" 
+		crossorigin="anonymous">
+</head>
+	<body>
+		<div id="root">
+			<div id="main">
+				<nav class="navbar navbar-expand navbar-dark bg-dark">
+					<a href="/flight-list" class="navbar-brand">Flights App</a>
+					<div class="navbar-nav mr-auto">
+						<li class="nav-item">
+							<a href="/flight-list" class="nav-link">Flights</a>
+						</li>
+						<li class="nav-item">
+							<a href="/flight-add" class="nav-link">Add Flight</a>
+						</li>
+					</div>
+				</nav>
+				<div class="container mt-3">
+					<h4>Flight List</h4>
+					<table class="table table-sm table-hover table-bordered">
+					    <thead>
+					      <tr class="table-primary">
+					        <th>Flight#</th>
+					        <th>Airline</th>
+					        <th>Source</th>
+					        <th>Destination</th>
+					        <th>&nbsp;</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					      <tr>
+					        <td>{{flight.flightNumber}}</td>
+					        <td>{{flight.airlineName}}</td>
+					        <td>{{flight.source}}</td>
+					        <td>{{flight.destination}}</td>
+					        <td>
+					        	<form action="/example01/adminapp01/flight/edit-form.html" method="post">
+									<input type="hidden" 
+										name="id" value="">
+									<button
+										type="submit"
+										class="badge badge-success">Edit</button>
+								</form>
+					        </td>
+					      </tr>
+					      <tr>
+					        <td>{{flight.flightNumber}}</td>
+					        <td>{{flight.airlineName}}</td>
+					        <td>{{flight.source}}</td>
+					        <td>{{flight.destination}}</td>
+					        <td>
+					        	<form action="/example01/adminapp01/flight/edit-form.html" method="post">
+									<input type="hidden" 
+										name="id" value="">
+									<button
+										type="submit"
+										class="badge badge-success">Edit</button>
+								</form>
+					        </td>
+					      </tr>
+					      <tr>
+					        <td>{{flight.flightNumber}}</td>
+					        <td>{{flight.airlineName}}</td>
+					        <td>{{flight.source}}</td>
+					        <td>{{flight.destination}}</td>
+					        <td>
+					        	<form action="/example01/adminapp01/flight/edit-form.html" method="post">
+									<input type="hidden" 
+										name="id" value="">
+									<button
+										type="submit"
+										class="badge badge-success">Edit</button>
+								</form>
+					        </td>
+					      </tr>
+					      <tr>
+					        <td>{{flight.flightNumber}}</td>
+					        <td>{{flight.airlineName}}</td>
+					        <td>{{flight.source}}</td>
+					        <td>{{flight.destination}}</td>
+					        <td>
+					        	<form action="/example01/adminapp01/flight/edit-form.html" method="post">
+									<input type="hidden" 
+										name="id" value="">
+									<button
+										type="submit"
+										class="badge badge-success">Edit</button>
+								</form>
+					        </td>
+					      </tr>
+					    </tbody>
+					  </table>
+				</div><!-- container mt-3 -->
+			</div><!-- #main -->
+		</div><!-- #root -->
+	</body>
+</html> 

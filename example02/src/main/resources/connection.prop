@@ -1,0 +1,4 @@
+URL=jdbc:mysql://localhost:3316/flight_app?useSSL=false
+USER=root
+PASSWORD=4321
+URL02=jdbc:mysql://localhost:3316/flight_app?useSSL=false
